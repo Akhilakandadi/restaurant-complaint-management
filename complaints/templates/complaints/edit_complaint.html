@@ -1,0 +1,20 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Complaint</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_complaint.css' %}">
+</head>
+<body>
+    <h1>Edit Complaint: {{ complaint.title }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Complaint</button>
+    </form>
+
+    <a href="{% url 'user_dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* complaints/static/complaints/user_dashboard.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+.status-pending {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.status-resolved {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.action-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dashboard-links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.dashboard-links a:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,132 @@
+/* Full Page Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f5;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-form button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logout-form button:hover {
+    text-decoration: underline;
+}
+
+/* Form Container (pushed a bit to the right) */
+.form-container {
+    background-color: white;
+    max-width: 700px;
+    margin: 60px auto 0 150px;  /* Margin-left pushes the form slightly right */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.welcome {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Form Rows */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    flex: 1;
+    text-align: right;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    flex: 2;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-row textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+/* Checkbox Row */
+.checkbox-row {
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.checkbox-row input {
+    margin: 0;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto 0 auto;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}

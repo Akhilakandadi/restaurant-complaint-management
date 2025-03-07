@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/success.css' %}">
+</head>
+<body>
+    <h1>Your complaint has been successfully submitted!</h1>
+    <p>Thank you for your feedback. We will look into your complaint shortly.</p>
+    <a href="/complaints/submit/">Submit Another Complaint</a>
+    <a href="{% url 'user_dashboard' %}">📄 View My Complaints</a>
+</body>
+</html>

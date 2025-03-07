@@ -1,0 +1,37 @@
+{% load static %}
+<h2>Welcome, {{ request.user.username }}!</h2>
+
+<p><a href="{% url 'submit_complaint' %}">📥 Submit New Complaint</a></p>
+<p><a href="{% url 'logout' %}">🚪 Logout</a></p>
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_dashboard.css' %}">
+
+<h3>Your Complaints</h3>
+{% if complaints %}
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+        {% for complaint in complaints %}
+            <tr>
+                <td>{{ complaint.title }}</td>
+                <td>{{ complaint.category }}</td>
+                <td>{{ complaint.get_status_display }}</td>
+                <td>{{ complaint.submitted_at }}</td>
+                <td>
+                    {% if complaint.status == 'PE' %}
+                        <a href="{% url 'edit_complaint' complaint.id %}">✏️ Edit</a>
+                        <a href="{% url 'delete_complaint' complaint.id %}">🗑️ Delete</a>
+                    {% else %}
+                           No actions allowed
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No complaints submitted yet.</p>
+{% endif %}
