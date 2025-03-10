@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing dependencies..."
+      - pip install pylint
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Running Pylint for Code Quality..."
+      - pylint --fail-under=5 $(find . -name "*.py")
+
+  build:
+    commands:
+      - echo "Building Docker Image..."
+      - docker build -t akhilakandadi/restaurant-complaints:latest .
+
+  post_build:
+    commands:
+      - echo "Pushing Image to Docker Hub..."
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - docker push akhilakandadi/restaurant-complaints:latest
+      - echo "Running Trivy Security Scan..."
+      - docker run --rm aquasec/trivy image akhilakandadi/restaurant-complaints:latest
+      - echo "Deploying Container..."
+      - docker run -d --name cont1 -p 3000:3000 akhilakandadi/restaurant-complaints:latest
+
+artifacts:
+  files: "**/*"
