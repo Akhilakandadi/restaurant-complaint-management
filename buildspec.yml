@@ -21,7 +21,8 @@ phases:
   post_build:
     commands:
       - echo "Pushing Image to Docker Hub..."
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+
       - docker push akhilakandadi/restaurant-complaints:latest
       - echo "Running Trivy Security Scan..."
       - docker run --rm aquasec/trivy image akhilakandadi/restaurant-complaints:latest
