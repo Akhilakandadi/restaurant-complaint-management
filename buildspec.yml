@@ -2,17 +2,16 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      python: 3.10
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt
-
+      - pip install pylint  # Add this line
 
   pre_build:
     commands:
       - echo "Running Pylint for Code Quality..."
       - pylint --fail-under=5 $(find . -name "*.py")
+
 
   build:
     commands:
