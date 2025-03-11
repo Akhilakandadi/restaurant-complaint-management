@@ -16,6 +16,7 @@ phases:
     commands:
       - echo "Building Docker Image..."
       - docker build -t akhilakandadi/restaurant-complaints:latest .
+      
       - echo "Creating Dockerrun.aws.json for EBS Deployment..."
       - |
         cat > Dockerrun.aws.json <<EOF
@@ -40,7 +41,10 @@ phases:
       - docker push akhilakandadi/restaurant-complaints:latest
 
       - echo "Zipping application for Elastic Beanstalk..."
-      - zip -r ebs-deploy.zip Dockerrun.aws.json
+      - zip -r ebs-deploy.zip Dockerrun.aws.json .ebextensions/ Dockerfile application.py requirements.txt
+
+      - echo "Uploading to S3..."
+      - aws s3 cp ebs-deploy.zip s3://YOUR-S3-BUCKET-NAME/
 
 artifacts:
   files:
