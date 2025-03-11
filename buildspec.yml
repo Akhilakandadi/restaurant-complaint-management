@@ -5,29 +5,43 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt
-      - pip install pylint  # Add this line
+      - pip install pylint  # Run Pylint for Code Quality
 
   pre_build:
     commands:
       - echo "Running Pylint for Code Quality..."
       - pylint --fail-under=5 $(find . -name "*.py")
 
-
   build:
     commands:
       - echo "Building Docker Image..."
       - docker build -t akhilakandadi/restaurant-complaints:latest .
+      - echo "Creating Dockerrun.aws.json for EBS Deployment..."
+      - |
+        cat > Dockerrun.aws.json <<EOF
+        {
+          "AWSEBDockerrunVersion": "1",
+          "Image": {
+            "Name": "akhilakandadi/restaurant-complaints:latest",
+            "Update": "true"
+          },
+          "Ports": [
+            {
+              "ContainerPort": "3000"
+            }
+          ]
+        }
+        EOF
 
   post_build:
     commands:
       - echo "Pushing Image to Docker Hub..."
       - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-
       - docker push akhilakandadi/restaurant-complaints:latest
-      - echo "Running Trivy Security Scan..."
-      - docker run --rm aquasec/trivy image akhilakandadi/restaurant-complaints:latest
-      - echo "Deploying Container..."
-      - docker run -d --name cont1 -p 3000:3000 akhilakandadi/restaurant-complaints:latest
+
+      - echo "Zipping application for Elastic Beanstalk..."
+      - zip -r ebs-deploy.zip Dockerrun.aws.json
 
 artifacts:
-  files: "**/*"
+  files:
+    - ebs-deploy.zip
