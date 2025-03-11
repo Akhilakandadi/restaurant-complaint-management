@@ -3,7 +3,7 @@ certifi==2025.1.31
 charset-normalizer==3.4.1
 colorama==0.4.6
 distlib==0.3.9
-Django==5.1.6
+Django==5.0.2
 django-chartjs==2.3.0
 filelock==3.17.0
 idna==3.10
@@ -21,3 +21,5 @@ tzdata==2025.1
 urllib3==2.3.0
 virtualenv==20.29.2
 wcwidth==0.2.13
+
+
