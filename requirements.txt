@@ -15,6 +15,7 @@ pluggy==1.5.0
 prettytable==3.14.0
 pytest==8.3.5
 pytest-django==4.10.0
+pylint==3.1.0  # Use the latest compatible version
 requests==2.32.3
 sqlparse==0.5.3
 tzdata==2025.1
